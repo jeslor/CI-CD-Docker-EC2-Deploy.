@@ -28,6 +28,18 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 
 #Make it executable:
 sudo chmod +x /usr/local/bin/docker-compose
+
+#Upgrade the docker Build x
+#Create the plugin directory:
+mkdir -p ~/.docker/cli-plugins
+
+#Download and install Buildx (Auto-detecting your architecture):
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+BUILDX_URL=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | grep "browser_download_url.*linux-$ARCH" | cut -d '"' -f 4)
+curl -L $BUILDX_URL -o ~/.docker/cli-plugins/docker-buildx
+
+#Make it executable:
+chmod +x ~/.docker/cli-plugins/docker-buildx
 ```
 
 ### Ubuntu
@@ -47,6 +59,18 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 
 #Make it executable:
 sudo chmod +x /usr/local/bin/docker-compose
+
+#Upgrade the docker Build x
+#Create the plugin directory:
+mkdir -p ~/.docker/cli-plugins
+
+#Download and install Buildx (Auto-detecting your architecture):
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+BUILDX_URL=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | grep "browser_download_url.*linux-$ARCH" | cut -d '"' -f 4)
+curl -L $BUILDX_URL -o ~/.docker/cli-plugins/docker-buildx
+
+#Make it executable:
+chmod +x ~/.docker/cli-plugins/docker-buildx
 ```
 
 ---
