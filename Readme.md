@@ -121,8 +121,37 @@ docker build -t my-first-image .
 ## 4. Run Your Container
 
 ```bash
-docker run my-first-image
-# Output: Hello from Docker on EC2!
+ docker run my-first-image
+ # Output: Hello from Docker on EC2!
+```
+
+---
+
+## 5. Enable Frontend to Access Backend
+
+To allow your Next.js frontend to access the backend, update your YAML file using nano (or your preferred editor):
+
+```bash
+nano docker-compose.yaml
+```
+
+Find the `frontend:` section and change the backend API URL to use your public IP address. Replace `<YOUR_PUBLIC_IP>` with your actual EC2 public IP:
+
+```yaml
+frontend:
+	build:
+		context: ./chicken_farm_frontend
+		args:
+			NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:4000/api/chickens
+	environment:
+		NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:4000/api/chickens
+		PORT: 3232
+```
+
+Save and exit nano (Ctrl+O, Enter, Ctrl+X).
+
+---
+
 ```
 
 ---
@@ -134,4 +163,11 @@ docker run my-first-image
 
 ---
 
+frontend:
+build:
+context: ./chicken_farm_frontend
+args: # Pass it here for the build process - NEXT_PUBLIC_CHICKEN_API_URL=http://16.171.136.228:4000/api/chickens
+environment: # Also pass it here for the container runtime - NEXT_PUBLIC_CHICKEN_API_URL=http://16.171.136.228:4000/api/chickens - PORT=3232
+
 _Need a more complex Dockerfile for Python, Node.js, or Java? Let me know!_
+```
