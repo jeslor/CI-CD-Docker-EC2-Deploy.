@@ -21,6 +21,13 @@ sudo dnf install -y docker
 sudo systemctl start docker
 # Enable Docker to start on boot
 sudo systemctl enable docker
+
+#Adding docker compose
+#Download the binary:
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+#Make it executable:
+sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 ### Ubuntu
@@ -34,14 +41,11 @@ sudo apt-get install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-
-Download the binary:
-
-Bash
+#Adding docker compose
+#Download the binary:
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-Make it executable:
 
-Bash
+#Make it executable:
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
