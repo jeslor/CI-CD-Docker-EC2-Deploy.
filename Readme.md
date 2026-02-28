@@ -142,9 +142,9 @@ frontend:
 	build:
 		context: ./chicken_farm_frontend
 		args:
-			NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:4000/api/chickens
+			NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:[PORT_IN_EC2]/api/chickens
 	environment:
-		NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:4000/api/chickens
+		NEXT_PUBLIC_CHICKEN_API_URL: http://<YOUR_PUBLIC_IP>:[PORT_IN_EC2]/api/chickens
 		PORT: 3232
 ```
 
